@@ -46,11 +46,11 @@ $sp: 480px;
     display: block;
   }
 }
-.sp{
+.sp {
   display: none;
-@include sp{
-  display: block;
-}
+  @include sp {
+    display: block;
+  }
 }
 
 header {
@@ -59,7 +59,6 @@ header {
     width: 90%;
     margin: auto;
     display: flex;
-    justify-content: space-between;
     color: white;
     align-items: center;
 
@@ -83,45 +82,64 @@ header {
         display: none;
       }
 
-      &:last-child {
-        margin: 0 0 0 auto;
-        padding-right: 0;
-        align-items: center;
+      li {
+        border-radius: 20px;
+        margin: 0 0.2rem;
 
-        li {
-          &:last-child {
-            margin-right: 0;
-          }
-
-          a i {
-            margin-right: 10px;
-          }
-          a.button-signup {
-            background: #fff;
-            color: #000;
-            padding: 0.5rem 0.7rem;
-            border-radius: 20px;
-          }
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
         }
       }
-
       li.menu-first {
         position: relative;
+
+        .arrow-bottom {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          margin: 3px 10px;
+          border-bottom: 2px solid #fff;
+          border-right: 2px solid #fff;
+          transform: rotate(45deg);
+
+          @include tab {
+            border-bottom: 3px solid #000;
+            border-right: 3px solid #000;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 35%;
+            right: 0;
+          }
+        }
 
         .menu-second {
           position: absolute;
           top: 100%;
           left: 0;
-          width: 200%;
-          margin-top: 1.5rem;
+          width: 170%;
+          margin-top: 1rem;
           transition: all 0.2s ease;
           background-color: #fff;
           z-index: 90;
           display: none;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          padding-bottom: 1rem;
+
+          @include tab {
+            box-shadow: none;
+            width: 100%;
+          }
           li a {
-            color: #000;
-            padding: 0.5rem 0;
+            color: rgb(124, 124, 124);
+            padding: 0.5rem;
+
+            @include tab {
+              font-size: 18px;
+              font-weight: 100;
+              padding-left: 1rem;
+              line-height: 2;
+            }
           }
         }
         &:hover > .menu-second {
@@ -131,14 +149,43 @@ header {
 
       a {
         display: block;
-        margin: 0 1rem;
         color: white;
         text-decoration: none;
+        padding: 0.5rem 0.7rem;
+      }
+    }
+
+    ul.nav-list-last {
+      margin: 0 0 0 auto;
+      padding-right: 0;
+      align-items: center;
+
+      li {
+        &:last-child {
+          margin-right: 0;
+        }
+
+        a {
+          i {
+            margin-right: 10px;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+      a.button-signup {
+        background: #fff;
+        color: #000;
+        padding: 0.5rem 0.7rem;
+        border-radius: 20px;
       }
     }
 
     .hamburger-menu {
       display: none;
+      width: 95%;
       .menu-btn {
         position: absolute;
         top: 0px;
@@ -151,7 +198,7 @@ header {
         z-index: 90;
         background-color: #000;
 
-        @include sp{
+        @include sp {
           width: 50px;
         }
       }
@@ -198,11 +245,12 @@ header {
         width: 100%;
         height: 100%;
         position: fixed;
-        top: 0;
-        left: 100%;
+        bottom: 100%;
+        left: 0;
         z-index: 80;
         background-color: #fff;
         transition: all 0.5s;
+        opacity: 0;
 
         .menu-content ul {
           padding: 70px 10px 0;
@@ -238,33 +286,45 @@ header {
         ul.nav-list {
           @include tab {
             display: block;
+            padding-top: 0;
           }
           li a {
             @include tab {
               color: #000;
-              font-size: 30px;
-              line-height: 2;
+              font-size: 32px;
+              font-weight: bold;
+              line-height: 1.5;
             }
           }
         }
         ul.nav-list-tab-bottom {
           padding-right: 0;
           padding-left: 0;
+          padding-top: 3.5rem;
           margin: 0 1.2rem;
           display: flex;
 
           @include sp {
-            margin: 2rem 1.2rem;
+            margin: 1rem 1.2rem;
           }
 
-          @include tab{
+          @include tab {
             display: block;
           }
 
           li {
+            @include tab {
+              border-radius: 0;
+            }
             a {
               @include tab {
                 font-size: 17px;
+              }
+            }
+
+            i {
+              @include tab {
+                margin-right: 10px;
               }
             }
             &:first-child {
@@ -272,7 +332,6 @@ header {
               margin: auto;
               text-align: center;
               background: #eeeeee;
-              padding: 0.5rem 0;
             }
             &:last-child {
               margin-top: 1rem;
@@ -281,17 +340,20 @@ header {
         }
       }
       #menu-btn-check:checked ~ .menu-content {
-        left: 0;
+        top: 65px;
+        bottom: 0;
+        opacity: 1;
 
-        @include sp{
+        @include sp {
           top: 65px;
         }
       }
       .nav-list-tab {
         display: flex;
         margin-right: 65px;
+        justify-content: flex-end;
 
-        @include sp{
+        @include sp {
           margin-right: 55px;
         }
         li {
@@ -321,10 +383,14 @@ header {
     position: relative;
 
     @include tab {
-      margin-top: 350px;
+      margin-top: 365px;
+      background-image: url(../img/uber-top-tab.jpg);
+      padding-top: calc(648 / 1152 * 100%);
     }
-    @include sp{
-      margin-top: 400px;
+    @include sp {
+      margin-top: 470px;
+      background-image: url(../img/uber-top-mobile.jpg);
+      padding-top: calc(563 / 751 * 100%);
     }
   }
   .top-box-white {
@@ -339,7 +405,7 @@ header {
     height: 550px;
 
     @include tab {
-      top: 65px;
+      top: 80px;
       left: 0;
       width: 100%;
       height: 350px;
@@ -347,12 +413,12 @@ header {
       -webkit-transform: none;
     }
 
-    @include sp{
+    @include sp {
       height: 400px;
     }
 
     .options {
-      border-bottom: 1px solid black;
+      border-bottom: 0.5px solid rgb(230, 230, 230);
     }
     .list-in-box {
       display: flex;
@@ -361,13 +427,52 @@ header {
       @include tab {
         width: 45%;
       }
+      @include sp {
+        width: 80%;
+      }
 
       li {
-        padding: 1rem 0 0 0;
         text-align: center;
+        width: 33%;
+        background-color: rgb(255, 253, 253);
+        border: none;
+        position: relative;
 
-        a i {
-          margin-bottom: 10px;
+        a {
+          padding: 1.5rem 0 1rem 0;
+          display: block;
+          width: 100%;
+          height: 100%;
+          i {
+            margin-bottom: 10px;
+          }
+
+          p {
+            padding: 0;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+          }
+        }
+      }
+      li.active {
+        &::before {
+          content: "";
+          position: absolute;
+          right: -14px;
+          bottom: 0;
+          display: inline-block;
+          width: 94px;
+          height: 3px;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+          background-color: black;
+
+          @include tab {
+            right: -52px;
+          }
         }
       }
     }
@@ -382,10 +487,9 @@ header {
         padding: 2rem 5rem 2rem 2rem;
       }
 
-      @include sp{
+      @include sp {
         font-size: 37px;
         padding: 2rem 5rem 2rem 1rem;
-
       }
     }
     p {
@@ -393,10 +497,10 @@ header {
       font-size: 19px;
 
       @include tab {
-        padding: 0rem 0rem 2rem 2rem;
+        padding: 0rem 0rem 0 2rem;
       }
 
-      @include sp{
+      @include sp {
         padding: 0rem 0rem 2rem 1rem;
       }
 
@@ -414,9 +518,9 @@ header {
       font-size: 17px;
 
       @include tab {
-        margin: 0 0 2.5rem 2rem;
+        margin: 0;
       }
-      @include sp{
+      @include sp {
         margin: 0 0 1rem 1rem;
       }
     }
@@ -424,9 +528,13 @@ header {
       @include tab {
         display: flex;
         align-items: center;
+        margin-left: 2rem;
+        margin-top: 2rem;
       }
-      @include sp{
+      @include sp {
         display: block;
+        margin-left: 0;
+        margin-top: 0;
       }
     }
   }
@@ -438,15 +546,26 @@ section.bg-business {
   background-size: cover;
   background-repeat: no-repeat;
   padding-bottom: 3.5rem;
+  position: relative;
 
   @include tab {
+    background-image: url(../img/empire-tab.png);
     background-position: top 47% right 13%;
     background-size: inherit;
   }
-  @include sp{
-    padding-bottom: 2rem;
-    background-position: top 25% right 28%;
-    background-size: cover;
+  @include sp {
+    background-image: url(../img/empire-mobile.png);
+    background-position: top 97% right 34%;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(250, 250, 250, 0.2);
   }
 }
 
@@ -460,23 +579,21 @@ section {
     padding-left: 2rem;
     padding-right: 2rem;
   }
-  @include sp{
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
+  @include sp {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
-
-  
 
   h2 {
     font-size: 40px;
     padding-bottom: 2rem;
 
-    @include sp{
+    @include sp {
       font-size: 32px;
       padding-bottom: 1.5rem;
     }
   }
-  p{
+  p {
     font-size: 17px;
   }
   button {
@@ -486,6 +603,10 @@ section {
     border: #000;
     padding: 1rem;
     font-size: 17px;
+
+    @include sp {
+      padding: 0.9rem 1.5rem;
+    }
   }
 }
 .safety-box {
@@ -496,7 +617,7 @@ section {
   .safety-box-children {
     width: 48%;
 
-    @include sp{
+    @include sp {
       width: 100%;
     }
 
@@ -509,21 +630,42 @@ section {
       @include tab {
         display: block;
       }
+      @include sp{
+        line-height: 1.5;
+      }
     }
     a {
       margin-top: 2rem;
       margin-right: 1rem;
       display: block;
-      border-bottom: 1px solid;
+      position: relative;
       width: max-content;
+
+      &::after {
+        position: absolute;
+        left: 0;
+        top: 23px;
+        background-color: rgb(197, 195, 195);
+        width: 100%;
+        height: 1.2px;
+        content: "";
+        display: inline-block;
+      }
 
       &:last-child {
         @include tab {
           margin-top: 1rem;
         }
-        @include sp{
+        @include sp {
           margin-bottom: 2rem;
+          margin-top: 2rem;
         }
+      }
+    }
+    p {
+      @include sp {
+        font-size: 19px;
+        line-height: 1.4;
       }
     }
   }
@@ -535,7 +677,7 @@ section {
   justify-content: space-between;
   margin-top: 7rem;
 
-  @include sp{
+  @include sp {
     margin-top: 3rem;
   }
 
@@ -548,6 +690,8 @@ section {
     }
     @include sp {
       width: 100%;
+      margin-bottom: 2.5rem;
+
     }
 
     i {
@@ -562,8 +706,19 @@ section {
     a {
       display: block;
       margin-top: 2rem;
-      border-bottom: 1px solid;
       width: max-content;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        left: 0;
+        top: 23px;
+        background-color: rgb(197, 195, 195);
+        width: 100%;
+        height: 1.2px;
+        content: "";
+        display: inline-block;
+      }
     }
   }
 }
@@ -577,8 +732,8 @@ section {
     padding-top: 3rem;
     padding-bottom: 3.5rem;
   }
-  @include sp{
-    margin-top: 0.5rem
+  @include sp {
+    margin-top: 0.5rem;
   }
 
   .arrow {
@@ -640,7 +795,7 @@ section {
     @include tab {
       width: 86%;
     }
-    @include sp{
+    @include sp {
       width: 64%;
     }
 
@@ -670,7 +825,7 @@ section {
         height: 2.5px;
         background: #000;
 
-        @include sp{
+        @include sp {
           left: 10px;
         }
       }
@@ -684,7 +839,7 @@ section {
         -webkit-transform: rotate(45deg);
         transform: rotate(45deg);
 
-        @include sp{
+        @include sp {
           left: 15px;
         }
       }
@@ -751,6 +906,7 @@ section {
       justify-content: space-between;
 
       p {
+        font-size: 28px;
         @include tab {
           font-size: 25px;
         }
@@ -759,11 +915,11 @@ section {
   }
 }
 .in-detail-sp {
-  @include tab{
+  @include tab {
     display: flex;
   }
 
-  @include sp{
+  @include sp {
     display: block;
   }
 
@@ -774,11 +930,11 @@ section {
       &:first-child {
         margin-bottom: 0;
       }
-      @include sp{
+      @include sp {
         width: 100%;
         padding-right: 0;
         padding-left: 0;
-        &:first-child{
+        &:first-child {
           margin-bottom: 1rem;
         }
       }
@@ -789,9 +945,9 @@ section {
   padding-top: 3rem;
   padding-bottom: 4rem;
 
-  @include sp{
-      padding-top: 1rem;
-      padding-bottom: 2rem;
+  @include sp {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
   }
 
   .bottom-box {
@@ -803,7 +959,7 @@ section {
     @include tab {
       font-size: 36px;
     }
-    @include sp{
+    @include sp {
       font-size: 31px;
     }
 
@@ -875,6 +1031,10 @@ footer {
   h3 {
     font-size: 23px;
     margin-bottom: 2rem;
+
+    @include sp{
+      margin-bottom: 2.5rem;
+    }
   }
   .footer-columns {
     display: flex;
@@ -885,8 +1045,10 @@ footer {
     @include tab {
       justify-content: inherit;
     }
-    @include sp{
+    @include sp {
       display: block;
+      margin-top: 4rem;
+
     }
 
     .footer-column {
@@ -897,7 +1059,7 @@ footer {
         width: 40%;
         margin-bottom: 2rem;
       }
-      @include sp{
+      @include sp {
         width: 100%;
       }
 
@@ -917,7 +1079,7 @@ footer {
     margin-bottom: 4rem;
     color: #fff;
 
-    @include tab{
+    @include tab {
       display: block;
       margin-top: 3rem;
       margin-bottom: 3rem;
@@ -935,10 +1097,10 @@ footer {
       &:first-child {
         width: 22%;
 
-        @include tab{
+        @include tab {
           width: 32%;
         }
-        @include sp{
+        @include sp {
           width: 75%;
         }
 
@@ -950,12 +1112,12 @@ footer {
         width: 50%;
         margin-left: 5rem;
 
-        @include tab{
+        @include tab {
           margin-left: 0;
           margin-top: 4rem;
           line-height: 2.5;
 
-          ul{
+          ul {
             display: block;
           }
         }
@@ -974,7 +1136,7 @@ footer {
         ul {
           justify-content: flex-end;
 
-          @include tab{
+          @include tab {
             justify-content: flex-start;
             margin-top: 3rem;
           }
@@ -994,23 +1156,23 @@ footer {
     justify-content: space-between;
     color: #fff;
     font-size: 13px;
-    opacity: 0.8;
+    opacity: 0.6;
 
-    @include tab{
+    @include tab {
       display: block;
     }
 
     .policies {
       width: 20%;
 
-      @include tab{
+      @include tab {
         width: 30%;
       }
 
-      @include tab{
+      @include tab {
         margin-top: 3rem;
       }
-      @include sp{
+      @include sp {
         margin-top: 5rem;
         width: 70%;
       }
@@ -1018,8 +1180,6 @@ footer {
         display: flex;
         width: 100%;
         justify-content: space-between;
-
-
 
         li a {
           color: #fff;
