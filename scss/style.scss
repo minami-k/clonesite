@@ -21,7 +21,7 @@ $sp: 480px;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
+  font-family: 'Sarabun', sans-serif;
   p {
     font-size: 20px;
   }
@@ -31,6 +31,9 @@ $sp: 480px;
   a {
     text-decoration: none;
     color: #000;
+  }
+  h1, h2{
+    font-weight: 100;
   }
 }
 
@@ -445,6 +448,7 @@ header {
           height: 100%;
           i {
             margin-bottom: 10px;
+            font-size: 20px;
           }
 
           p {
@@ -494,7 +498,7 @@ header {
     }
     p {
       padding: 0rem 0rem 2rem 3rem;
-      font-size: 19px;
+      font-size: 17px;
 
       @include tab {
         padding: 0rem 0rem 0 2rem;
@@ -696,6 +700,7 @@ section {
 
     i {
       margin-bottom: 15px;
+      font-size: 20px;
     }
 
     h4 {
@@ -906,7 +911,7 @@ section {
       justify-content: space-between;
 
       p {
-        font-size: 28px;
+        font-size: 26px;
         @include tab {
           font-size: 25px;
         }
@@ -952,7 +957,7 @@ section {
 
   .bottom-box {
     border: none;
-    font-size: 45px;
+    font-size: 35px;
     border-bottom: 1px solid #000;
     font-weight: bold;
 

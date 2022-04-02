@@ -9249,6 +9249,7 @@ readers do not read off random characters that represent icons */
           box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Sarabun', sans-serif;
 }
 
 * p {
@@ -9262,6 +9263,10 @@ readers do not read off random characters that represent icons */
 * a {
   text-decoration: none;
   color: #000;
+}
+
+* h1, * h2 {
+  font-weight: 100;
 }
 
 @media (max-width: 1024px) {
@@ -9774,6 +9779,7 @@ header nav .hamburger-menu .nav-list-tab a.button-signup {
 
 .top-wrap .top-box-white .list-in-box li a i {
   margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .top-wrap .top-box-white .list-in-box li a p {
@@ -9833,7 +9839,7 @@ header nav .hamburger-menu .nav-list-tab a.button-signup {
 
 .top-wrap .top-box-white p {
   padding: 0rem 0rem 2rem 3rem;
-  font-size: 19px;
+  font-size: 17px;
 }
 
 @media (max-width: 1024px) {
@@ -10103,6 +10109,7 @@ section button {
 
 .three-columns .single-column i {
   margin-bottom: 15px;
+  font-size: 20px;
 }
 
 .three-columns .single-column h4 {
@@ -10360,7 +10367,7 @@ section button {
 }
 
 .in-detail .bottom-box .bottom-box-child p {
-  font-size: 28px;
+  font-size: 26px;
 }
 
 @media (max-width: 1024px) {
@@ -10418,7 +10425,7 @@ section button {
 
 .in-detail-2 .bottom-box {
   border: none;
-  font-size: 45px;
+  font-size: 35px;
   border-bottom: 1px solid #000;
   font-weight: bold;
 }
